@@ -9,13 +9,13 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table
+@Table(name="`user`")
 @Getter @Setter
 @ToString
 public class User {
     @Id
     @Column(length = 30)
-    private Long userId;
+    private String userId;
 
     @Column
     private String name;
