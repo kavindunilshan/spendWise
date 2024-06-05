@@ -18,11 +18,11 @@ public class Transaction {
     private int transactionId;
 
     @ManyToOne
-    @JoinColumn(name = "cat_id", referencedColumnName = "categoryId")
+    @JoinColumn(name = "category_id", referencedColumnName = "categoryId")
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "custom_cat_id", referencedColumnName = "customCategoryId")
+    @JoinColumn(name = "custom_category_id", referencedColumnName = "customCategoryId")
     private CustomCategory customCategory;
 
     @ManyToOne
