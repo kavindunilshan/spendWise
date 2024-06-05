@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/custom-categories")
 public class CustomCategoryController {
@@ -21,8 +23,8 @@ public class CustomCategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CustomCategory> getCustomCategoryById(@PathVariable int id) {
-        CustomCategory customCategory = customCategoryService.getCustomCategoryById(id);
+    public ResponseEntity<List<CustomCategory>> getCustomCategoryByUserId(@PathVariable String id) {
+        List<CustomCategory> customCategory = customCategoryService.getCustomCategoryById(id);
         return new ResponseEntity<>(customCategory, HttpStatus.OK);
     }
 

@@ -6,6 +6,8 @@ import com.app.spendWise.repository.CustomCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomCategoryService {
 
@@ -16,8 +18,8 @@ public class CustomCategoryService {
         return customCategoryRepository.save(customCategory);
     }
 
-    public CustomCategory getCustomCategoryById(int id) {
-        return customCategoryRepository.findById(id)
+    public List<CustomCategory> getCustomCategoryById(String  id) {
+        return customCategoryRepository.findAllByUserId(id)
                 .orElseThrow(() -> new NotFoundException("CustomCategory not found"));
     }
 
