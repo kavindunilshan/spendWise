@@ -18,20 +18,25 @@ public class Transaction {
     private int transactionId;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "categoryId")
+    @JoinColumn(name = "category_id", referencedColumnName = "categoryId", insertable = false, updatable = false)
     private Category category;
 
+    @Column
+    private int categoryId;
+
     @ManyToOne
-    @JoinColumn(name = "custom_category_id", referencedColumnName = "customCategoryId")
+    @JoinColumn(name = "custom_category_id", referencedColumnName = "customCategoryId", insertable = false, updatable = false)
     private CustomCategory customCategory;
 
+    @Column
+    private int customCategoryId;
+
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "userId")
+    @JoinColumn(name = "user_id", referencedColumnName = "userId", insertable = false, updatable = false)
     private User user;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 50)
-    private CategoryType categoryType;
+    @Column
+    private int userId;
 
     @Column(nullable = false)
     private LocalDateTime timestamp;
