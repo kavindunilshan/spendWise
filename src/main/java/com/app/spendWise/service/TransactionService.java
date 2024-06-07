@@ -30,7 +30,6 @@ public class TransactionService {
         existingTransaction.setCategory(newTransaction.getCategory());
         existingTransaction.setCustomCategory(newTransaction.getCustomCategory());
         existingTransaction.setUser(newTransaction.getUser());
-        existingTransaction.setCategoryType(newTransaction.getCategoryType());
         existingTransaction.setTimestamp(newTransaction.getTimestamp());
         existingTransaction.setDescription(newTransaction.getDescription());
 

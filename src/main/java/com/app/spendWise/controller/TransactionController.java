@@ -16,7 +16,7 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         Transaction savedTransaction = transactionService.createTransaction(transaction);
         return new ResponseEntity<>(savedTransaction, HttpStatus.CREATED);
