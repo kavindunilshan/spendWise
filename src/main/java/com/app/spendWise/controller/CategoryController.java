@@ -2,6 +2,7 @@ package com.app.spendWise.controller;
 
 import com.app.spendWise.entity.Category;
 import com.app.spendWise.service.CategoryService;
+import com.app.spendWise.utils.CategoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,12 @@ public class CategoryController {
     public ResponseEntity<Category> getCategoryById(@PathVariable int id) {
         Category category = categoryService.getCategoryById(id);
         return new ResponseEntity<>(category, HttpStatus.OK);
+    }
+
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<Category>> getCategoriesByType(@PathVariable CategoryType type) {
+        List<Category> categories = categoryService.getCategoriesByType(type);
+        return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
     @GetMapping("")

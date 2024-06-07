@@ -3,6 +3,7 @@ package com.app.spendWise.service;
 import com.app.spendWise.entity.Category;
 import com.app.spendWise.exception.NotFoundException;
 import com.app.spendWise.repository.CategoryRepository;
+import com.app.spendWise.utils.CategoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,10 @@ public class CategoryService {
 
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
+    }
+
+    public List<Category> getCategoriesByType(CategoryType type) {
+        return categoryRepository.findByType(type);
     }
 
     public Category updateCategory(int id, Category newCategory) {
