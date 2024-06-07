@@ -16,10 +16,17 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Category> createCategory(@RequestBody Category category) {
         Category savedCategory = categoryService.createCategory(category);
         return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
+    }
+
+    // post mapping for all categories
+    @PostMapping("/all")
+    public ResponseEntity<List<Category>> createAllCategories(@RequestBody List<Category> categories) {
+        List<Category> savedCategories = categoryService.createAllCategories(categories);
+        return new ResponseEntity<>(savedCategories, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -28,7 +35,7 @@ public class CategoryController {
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<List<Category>> getAllCategories() {
         List<Category> categories = categoryService.getAllCategories();
         return new ResponseEntity<>(categories, HttpStatus.OK);

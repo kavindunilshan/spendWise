@@ -18,6 +18,11 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
+    // method to create all categories
+    public List<Category> createAllCategories(List<Category> categories) {
+        return categoryRepository.saveAll(categories);
+    }
+
     public Category getCategoryById(int id) {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Category not found"));
