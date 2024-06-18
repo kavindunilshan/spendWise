@@ -1,10 +1,10 @@
 package com.app.spendWise.entity;
 
-import com.app.spendWise.utils.CategoryType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -22,21 +22,24 @@ public class Transaction {
     private Category category;
 
     @Column
-    private int categoryId;
+    private Integer category_id;
 
     @ManyToOne
     @JoinColumn(name = "custom_category_id", referencedColumnName = "customCategoryId", insertable = false, updatable = false)
     private CustomCategory customCategory;
 
     @Column
-    private int customCategoryId;
+    private Integer custom_category_id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "userId", insertable = false, updatable = false)
     private User user;
 
-    @Column
-    private int userId;
+    @Column(length = 30)
+    private String user_id;
+
+    @Column()
+    private LocalDateTime date;
 
     @Column(nullable = false)
     private LocalDateTime timestamp;
