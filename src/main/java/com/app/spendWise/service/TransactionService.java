@@ -4,6 +4,7 @@ import com.app.spendWise.entity.Transaction;
 import com.app.spendWise.exception.NotFoundException;
 import com.app.spendWise.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,14 @@ public class TransactionService {
     public Transaction getTransactionById(int id) {
         return transactionRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Transaction not found"));
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactionRepository.findAll();
+    }
+
+    public List<Transaction> getLastFiveTransactions() {
+        return transactionRepository.findLastFiveTransactions(PageRequest.of(0, 5));
     }
 
     public Transaction updateTransaction(int id, Transaction newTransaction) {

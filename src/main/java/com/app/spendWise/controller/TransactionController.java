@@ -28,6 +28,19 @@ public class TransactionController {
         return new ResponseEntity<>(transaction, HttpStatus.OK);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<Transaction>> getTransactions() {
+        List<Transaction> transactions = transactionService.getTransactions();
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
+
+    @GetMapping("/last-five")
+    public ResponseEntity<List<Transaction>> getLastFiveTransactions() {
+        List<Transaction> transactions = transactionService.getLastFiveTransactions();
+        System.out.println("here" + transactions);
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Transaction> updateTransaction(@PathVariable int id, @RequestBody Transaction transaction) {
         Transaction updatedTransaction = transactionService.updateTransaction(id, transaction);
