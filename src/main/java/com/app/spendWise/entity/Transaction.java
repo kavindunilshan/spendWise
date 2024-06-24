@@ -46,4 +46,7 @@ public class Transaction {
 
     @Column(length = 255)
     private String description;
+
+    @Column(nullable = false)
+    private double amount;
 }
