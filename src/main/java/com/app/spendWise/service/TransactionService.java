@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,6 +55,23 @@ public class TransactionService {
         pocketMoney.put("pocket", pocket);
 
         return pocketMoney;
+    }
+
+    public HashMap<String, Double> getMonthlyExpensesByUserIdAndCategoryType(String userId, CategoryType categoryType, int months) {
+        List<Object[]> results = transactionRepository.findMonthlySumsByUserIdAndCategoryType(userId, categoryType, months);
+
+        HashMap<String, Double> monthlyExpenses = new HashMap<>();
+
+        for (Object[] result : results) {
+            Integer year = (Integer) result[0];
+            Integer month = (Integer) result[1];
+            BigDecimal total = (BigDecimal) result[2];
+
+            String yearMonthKey = String.format("%d-%02d", year, month);
+            monthlyExpenses.put(yearMonthKey, total.doubleValue());
+        }
+
+        return monthlyExpenses;
     }
 
     public Map<String, Double> getExpenseBreakdownByCategory(String userId, CategoryType type) {

@@ -55,6 +55,13 @@ public class TransactionController {
         return transactionService.getExpenseBreakdownByCategory(userId, type);
     }
 
+    @GetMapping("/{userId}/monthly/{type}/{months}")
+    public ResponseEntity<HashMap<String, Double>> getMonthlyExpensesByUserIdAndCategoryType(@PathVariable String userId,
+                                                                                             @PathVariable CategoryType type,
+                                                                                             @PathVariable int months) {
+        return ResponseEntity.ok(transactionService.getMonthlyExpensesByUserIdAndCategoryType(userId, type, months));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Transaction> updateTransaction(@PathVariable int id, @RequestBody Transaction transaction) {
         Transaction updatedTransaction = transactionService.updateTransaction(id, transaction);
