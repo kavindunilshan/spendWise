@@ -44,6 +44,11 @@ public class TransactionController {
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 
+    @GetMapping("/pocket/{userId}")
+    public ResponseEntity<Double> getPocketMoney(@PathVariable String userId) {
+        return ResponseEntity.ok(transactionService.getPocketMoney(userId));
+    }
+
     @GetMapping("/{userId}/{type}/breakdown")
     public Map<String, Double> getExpenseBreakdownByCategory(@PathVariable String userId, @PathVariable CategoryType type) {
         return transactionService.getExpenseBreakdownByCategory(userId, type);

@@ -35,6 +35,12 @@ public class TransactionService {
         return transactionRepository.findLastFiveTransactionsByUserId(userId, PageRequest.of(0, 5));
     }
 
+    public double getPocketMoney(String userId) {
+        return transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.INCOME)
+                .subtract(transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.EXPENSE))
+                .doubleValue();
+    }
+
     public Map<String, Double> getExpenseBreakdownByCategory(String userId, CategoryType type) {
         List<Transaction> transactions = transactionRepository.findByUserUserIdAndCategoryType(userId, type);
 

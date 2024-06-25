@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.domain.Pageable;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -17,5 +18,8 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     List<Transaction> findLastFiveTransactionsByUserId(@Param("userId") String userId, Pageable pageable);
 
     List<Transaction> findByUserUserIdAndCategoryType(String user_userId, CategoryType category_type);
+
+    @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.user.userId = :userId AND t.category.type = :categoryType")
+    BigDecimal sumAmountsByUserIdAndCategoryType(@Param("userId") String userId, @Param("categoryType") CategoryType categoryType);
 
 }
