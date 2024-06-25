@@ -31,8 +31,8 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
 
-    public List<Transaction> getLastFiveTransactions() {
-        return transactionRepository.findLastFiveTransactions(PageRequest.of(0, 5));
+    public List<Transaction> getLastFiveTransactions(String userId) {
+        return transactionRepository.findLastFiveTransactionsByUserId(userId, PageRequest.of(0, 5));
     }
 
     public Map<String, Double> getExpenseBreakdownByCategory(String userId, CategoryType type) {

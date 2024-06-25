@@ -36,9 +36,9 @@ public class TransactionController {
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 
-    @GetMapping("/last-five")
-    public ResponseEntity<List<Transaction>> getLastFiveTransactions() {
-        List<Transaction> transactions = transactionService.getLastFiveTransactions();
+    @GetMapping("/{user_id}/last-five")
+    public ResponseEntity<List<Transaction>> getLastFiveTransactions(@PathVariable String user_id) {
+        List<Transaction> transactions = transactionService.getLastFiveTransactions(user_id);
         System.out.println("here" + transactions);
 
         return new ResponseEntity<>(transactions, HttpStatus.OK);
