@@ -35,8 +35,8 @@ public class TransactionService {
         return transactionRepository.findLastFiveTransactions(PageRequest.of(0, 5));
     }
 
-    public Map<String, Double> getExpenseBreakdownByCategory(String userId) {
-        List<Transaction> transactions = transactionRepository.findByUserUserIdAndCategoryType(userId, CategoryType.EXPENSE);
+    public Map<String, Double> getExpenseBreakdownByCategory(String userId, CategoryType type) {
+        List<Transaction> transactions = transactionRepository.findByUserUserIdAndCategoryType(userId, type);
 
         Map<String, Double> expenseBreakdown = new HashMap<>();
 

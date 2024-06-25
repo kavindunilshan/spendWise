@@ -2,6 +2,7 @@ package com.app.spendWise.controller;
 
 import com.app.spendWise.entity.Transaction;
 import com.app.spendWise.service.TransactionService;
+import com.app.spendWise.utils.CategoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,9 +44,9 @@ public class TransactionController {
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 
-    @GetMapping("/{userId}/expense/breakdown")
-    public Map<String, Double> getExpenseBreakdownByCategory(@PathVariable String userId) {
-        return transactionService.getExpenseBreakdownByCategory(userId);
+    @GetMapping("/{userId}/{type}/breakdown")
+    public Map<String, Double> getExpenseBreakdownByCategory(@PathVariable String userId, @PathVariable CategoryType type) {
+        return transactionService.getExpenseBreakdownByCategory(userId, type);
     }
 
     @PutMapping("/{id}")
