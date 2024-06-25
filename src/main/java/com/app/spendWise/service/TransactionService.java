@@ -35,10 +35,25 @@ public class TransactionService {
         return transactionRepository.findLastFiveTransactionsByUserId(userId, PageRequest.of(0, 5));
     }
 
-    public double getPocketMoney(String userId) {
-        return transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.INCOME)
-                .subtract(transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.EXPENSE))
-                .doubleValue();
+    public HashMap<String, Double> getPocketMoney(String userId) {
+        // Hashmap
+        HashMap<String, Double> pocketMoney = new HashMap<>();
+
+        // Income
+        double income = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.INCOME).doubleValue();
+
+        // Expenses
+        double expenses = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.EXPENSE).doubleValue();
+
+        // Pocket Money
+        double pocket = income - expenses;
+
+        // Put values in hashmap
+        pocketMoney.put("income", income);
+        pocketMoney.put("expenses", expenses);
+        pocketMoney.put("pocket", pocket);
+
+        return pocketMoney;
     }
 
     public Map<String, Double> getExpenseBreakdownByCategory(String userId, CategoryType type) {

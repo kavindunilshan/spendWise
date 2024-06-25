@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +46,7 @@ public class TransactionController {
     }
 
     @GetMapping("/pocket/{userId}")
-    public ResponseEntity<Double> getPocketMoney(@PathVariable String userId) {
+    public ResponseEntity<HashMap<String,Double>> getPocketMoney(@PathVariable String userId) {
         return ResponseEntity.ok(transactionService.getPocketMoney(userId));
     }
 
