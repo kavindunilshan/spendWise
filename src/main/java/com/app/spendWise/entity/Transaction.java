@@ -38,7 +38,6 @@ public class Transaction {
     @JoinColumn(name = "user_id", referencedColumnName = "userId", insertable = false, updatable = false)
     private User user;
 
-
     @Column()
     private LocalDateTime date;
 
