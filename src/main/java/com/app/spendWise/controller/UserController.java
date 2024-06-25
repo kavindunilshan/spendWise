@@ -15,6 +15,12 @@ public class UserController {
 
     @PostMapping("")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
+
+        System.out.println("*************************");
+        System.out.println("Request comes....." + user);
+        System.out.println("*****************************");
+
+
         User savedUser = userService.registerUser(user);
         return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
