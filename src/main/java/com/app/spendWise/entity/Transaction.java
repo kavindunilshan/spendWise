@@ -31,12 +31,13 @@ public class Transaction {
     @Column
     private Integer custom_category_id;
 
+    @Column(length = 30)
+    private String user_id;
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "userId", insertable = false, updatable = false)
     private User user;
 
-    @Column(length = 30)
-    private String user_id;
 
     @Column()
     private LocalDateTime date;

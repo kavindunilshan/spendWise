@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/transactions")
@@ -38,7 +39,13 @@ public class TransactionController {
     public ResponseEntity<List<Transaction>> getLastFiveTransactions() {
         List<Transaction> transactions = transactionService.getLastFiveTransactions();
         System.out.println("here" + transactions);
+
         return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
+
+    @GetMapping("/{userId}/expense/breakdown")
+    public Map<String, Double> getExpenseBreakdownByCategory(@PathVariable String userId) {
+        return transactionService.getExpenseBreakdownByCategory(userId);
     }
 
     @PutMapping("/{id}")
