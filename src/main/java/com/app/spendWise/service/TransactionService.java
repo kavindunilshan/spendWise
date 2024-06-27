@@ -4,6 +4,7 @@ import com.app.spendWise.entity.Transaction;
 import com.app.spendWise.exception.NotFoundException;
 import com.app.spendWise.repository.TransactionRepository;
 import com.app.spendWise.utils.CategoryType;
+import com.app.spendWise.utils.CommonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -62,7 +63,7 @@ public class TransactionService {
         for(CategoryType type: CategoryType.values()) {
             List<Object[]> results = transactionRepository.findMonthlySumsByUserUserIdAndCategoryType(userId, type, months);
 
-            HashMap<String, Double> monthlyExpenses = new HashMap<>();
+            HashMap<String, Double> monthlyExpenses = CommonUtils.generateMonthMap();
 
             for (Object[] result : results) {
                 Integer year = (Integer) result[0];
@@ -71,7 +72,10 @@ public class TransactionService {
                 Double total = (Double) result[2];
 
                 String yearMonthKey = String.format("%d-%02d", year, month);
-                monthlyExpenses.put(yearMonthKey, total);
+
+                if (monthlyExpenses.containsKey(yearMonthKey)) {
+                    monthlyExpenses.put(yearMonthKey, total);
+                }
             }
 
             monthlyData.put(type.toString(), monthlyExpenses);
