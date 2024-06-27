@@ -22,13 +22,14 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.user.userId = :userId AND t.category.type = :categoryType")
     BigDecimal sumAmountsByUserIdAndCategoryType(@Param("userId") String userId, @Param("categoryType") CategoryType categoryType);
 
-    @Query("SELECT FUNCTION('YEAR', t.date) as year, FUNCTION('MONTH', t.date) as month, SUM(t.amount) as total " +
+    @Query("SELECT EXTRACT(YEAR FROM t.date) as year, EXTRACT(MONTH FROM t.date) as month, SUM(t.amount) as total " +
             "FROM Transaction t WHERE t.user.userId = :userId AND t.category.type = :categoryType " +
-            "GROUP BY FUNCTION('YEAR', t.date), FUNCTION('MONTH', t.date) " +
+            "GROUP BY EXTRACT(YEAR FROM t.date), EXTRACT(MONTH FROM t.date) " +
             "ORDER BY year DESC, month DESC " +
             "LIMIT :months")
-    List<Object[]> findMonthlySumsByUserIdAndCategoryType(@Param("userId") String userId,
-                                                          @Param("categoryType") CategoryType categoryType,
-                                                          @Param("months") int months);
+    List<Object[]> findMonthlySumsByUserUserIdAndCategoryType(@Param("userId") String userId,
+                                                              @Param("categoryType") CategoryType categoryType,
+                                                              @Param("months") int months);
+
 
 }

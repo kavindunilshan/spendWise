@@ -58,17 +58,18 @@ public class TransactionService {
     }
 
     public HashMap<String, Double> getMonthlyExpensesByUserIdAndCategoryType(String userId, CategoryType categoryType, int months) {
-        List<Object[]> results = transactionRepository.findMonthlySumsByUserIdAndCategoryType(userId, categoryType, months);
+        List<Object[]> results = transactionRepository.findMonthlySumsByUserUserIdAndCategoryType(userId, categoryType, months);
 
         HashMap<String, Double> monthlyExpenses = new HashMap<>();
 
         for (Object[] result : results) {
             Integer year = (Integer) result[0];
             Integer month = (Integer) result[1];
-            BigDecimal total = (BigDecimal) result[2];
+            // result[2] is a double value
+            Double total = (Double) result[2];
 
             String yearMonthKey = String.format("%d-%02d", year, month);
-            monthlyExpenses.put(yearMonthKey, total.doubleValue());
+            monthlyExpenses.put(yearMonthKey, total);
         }
 
         return monthlyExpenses;
