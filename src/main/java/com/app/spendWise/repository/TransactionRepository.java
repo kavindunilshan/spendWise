@@ -14,6 +14,9 @@ import java.util.List;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
+    // find user by user id
+    List<Transaction> findByUserUserId(String userId);
+
     @Query(value = "SELECT t FROM Transaction t WHERE t.user.userId = :userId ORDER BY t.transactionId DESC")
     List<Transaction> findLastFiveTransactionsByUserId(@Param("userId") String userId, Pageable pageable);
 

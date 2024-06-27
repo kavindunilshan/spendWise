@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,9 +24,8 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
-    public Transaction getTransactionById(int id) {
-        return transactionRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Transaction not found"));
+    public List<Transaction> getTransactionById(String  userId) {
+        return transactionRepository.findByUserUserId(userId);
     }
 
     public List<Transaction> getTransactions() {

@@ -25,9 +25,9 @@ public class TransactionController {
         return new ResponseEntity<>(savedTransaction, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Transaction> getTransactionById(@PathVariable int id) {
-        Transaction transaction = transactionService.getTransactionById(id);
+    @GetMapping("/{userId}")
+    public ResponseEntity<List<Transaction>> getTransactionById(@PathVariable String  userId) {
+        List<Transaction> transaction = transactionService.getTransactionById(userId);
         return new ResponseEntity<>(transaction, HttpStatus.OK);
     }
 
@@ -37,9 +37,9 @@ public class TransactionController {
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 
-    @GetMapping("/{user_id}/last-five")
-    public ResponseEntity<List<Transaction>> getLastFiveTransactions(@PathVariable String user_id) {
-        List<Transaction> transactions = transactionService.getLastFiveTransactions(user_id);
+    @GetMapping("/{userId}/last-five")
+    public ResponseEntity<List<Transaction>> getLastFiveTransactions(@PathVariable String userId) {
+        List<Transaction> transactions = transactionService.getLastFiveTransactions(userId);
         System.out.println("here" + transactions);
 
         return new ResponseEntity<>(transactions, HttpStatus.OK);
