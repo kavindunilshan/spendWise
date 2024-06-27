@@ -22,11 +22,5 @@ public class Preferences {
     private String userId;
 
     @Column()
-    private String currency;
-
-    @Column()
-    private String country;
-
-    @Column()
     private boolean darkMode;
 }

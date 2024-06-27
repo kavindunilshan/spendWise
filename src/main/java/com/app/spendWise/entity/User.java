@@ -19,4 +19,10 @@ public class User {
 
     @Column
     private String email;
+
+    @Column()
+    private String currency;
+
+    @Column()
+    private String country;
 }
