@@ -55,9 +55,8 @@ public class TransactionController {
         return transactionService.getExpenseBreakdownByCategory(userId, type);
     }
 
-    @GetMapping("/{userId}/monthly/{type}/{months}")
+    @GetMapping("/{userId}/monthly/{months}")
     public ResponseEntity<HashMap<String, HashMap<String, Double>>> getMonthlyExpensesByUserIdAndCategoryType(@PathVariable String userId,
-                                                                                             @PathVariable CategoryType type,
                                                                                              @PathVariable int months) {
         return ResponseEntity.ok(transactionService.getMonthlyDataByUserIdAndCategoryType(userId, months));
     }
