@@ -56,10 +56,10 @@ public class TransactionController {
     }
 
     @GetMapping("/{userId}/monthly/{type}/{months}")
-    public ResponseEntity<HashMap<String, Double>> getMonthlyExpensesByUserIdAndCategoryType(@PathVariable String userId,
+    public ResponseEntity<HashMap<String, HashMap<String, Double>>> getMonthlyExpensesByUserIdAndCategoryType(@PathVariable String userId,
                                                                                              @PathVariable CategoryType type,
                                                                                              @PathVariable int months) {
-        return ResponseEntity.ok(transactionService.getMonthlyExpensesByUserIdAndCategoryType(userId, type, months));
+        return ResponseEntity.ok(transactionService.getMonthlyDataByUserIdAndCategoryType(userId, months));
     }
 
     @PutMapping("/{id}")

@@ -57,22 +57,27 @@ public class TransactionService {
         return pocketMoney;
     }
 
-    public HashMap<String, Double> getMonthlyExpensesByUserIdAndCategoryType(String userId, CategoryType categoryType, int months) {
-        List<Object[]> results = transactionRepository.findMonthlySumsByUserUserIdAndCategoryType(userId, categoryType, months);
+    public HashMap<String, HashMap<String, Double>> getMonthlyDataByUserIdAndCategoryType(String userId, int months) {
+        HashMap<String, HashMap<String, Double>> monthlyData = new HashMap<>();
+        for(CategoryType type: CategoryType.values()) {
+            List<Object[]> results = transactionRepository.findMonthlySumsByUserUserIdAndCategoryType(userId, type, months);
 
-        HashMap<String, Double> monthlyExpenses = new HashMap<>();
+            HashMap<String, Double> monthlyExpenses = new HashMap<>();
 
-        for (Object[] result : results) {
-            Integer year = (Integer) result[0];
-            Integer month = (Integer) result[1];
-            // result[2] is a double value
-            Double total = (Double) result[2];
+            for (Object[] result : results) {
+                Integer year = (Integer) result[0];
+                Integer month = (Integer) result[1];
+                // result[2] is a double value
+                Double total = (Double) result[2];
 
-            String yearMonthKey = String.format("%d-%02d", year, month);
-            monthlyExpenses.put(yearMonthKey, total);
+                String yearMonthKey = String.format("%d-%02d", year, month);
+                monthlyExpenses.put(yearMonthKey, total);
+            }
+
+            monthlyData.put(type.toString(), monthlyExpenses);
         }
 
-        return monthlyExpenses;
+        return monthlyData;
     }
 
     public Map<String, Double> getExpenseBreakdownByCategory(String userId, CategoryType type) {
