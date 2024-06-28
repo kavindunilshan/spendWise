@@ -26,6 +26,8 @@ public class UserService {
 
         existingUser.setName(newUser.getName());
         existingUser.setEmail(newUser.getEmail());
+        existingUser.setCountry(newUser.getCountry());
+        existingUser.setCurrency(newUser.getCurrency());
 
         return userRepository.save(existingUser);
     }
