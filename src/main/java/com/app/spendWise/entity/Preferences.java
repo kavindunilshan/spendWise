@@ -1,9 +1,6 @@
 package com.app.spendWise.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -20,6 +17,10 @@ public class Preferences {
     @Id
     @Column(length = 30)
     private String userId;
+
+    @OneToOne
+    @JoinColumn(name = "userId", referencedColumnName = "userId", insertable = false, updatable = false)
+    private User user;
 
     @Column()
     private Boolean isDarkMode;
