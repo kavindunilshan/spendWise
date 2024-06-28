@@ -22,5 +22,11 @@ public class Preferences {
     private String userId;
 
     @Column()
-    private boolean darkMode;
+    private Boolean isDarkMode;
+
+    @Column()
+    private String isIncomePieChart;
+
+    @Column()
+    private String isExpensePieChart;
 }

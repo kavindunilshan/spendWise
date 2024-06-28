@@ -30,9 +30,9 @@ public class PreferenceController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("")
-    public ResponseEntity<Preferences> updatePreferences(@RequestBody Preferences preferences) {
-        preferenceService.updatePreferences(preferences);
+    @PutMapping("/{userId}")
+    public ResponseEntity<Preferences> updatePreferences(@PathVariable String userId, @RequestBody Preferences preferences) {
+        preferenceService.updatePreferences(userId, preferences);
         return new ResponseEntity<>(preferences, HttpStatus.OK);
     }
 }

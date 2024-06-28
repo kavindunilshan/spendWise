@@ -22,7 +22,8 @@ public class PreferenceService {
         preferenceRepository.deleteById(userId);
     }
 
-    public void updatePreferences(Preferences preferences) {
+    public void updatePreferences(String id, Preferences preferences) {
+        preferences.setUserId(id);
         preferenceRepository.save(preferences);
     }
 }
