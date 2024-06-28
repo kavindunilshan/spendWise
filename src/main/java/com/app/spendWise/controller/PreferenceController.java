@@ -7,7 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/api/preferences")
+@RestController
+@RequestMapping("/api/preferences")
 public class PreferenceController {
     @Autowired
     private PreferenceService preferenceService;
@@ -21,6 +22,8 @@ public class PreferenceController {
     @GetMapping("/{userId}")
     public ResponseEntity<Preferences> getPreferences(@PathVariable String userId) {
         Preferences preferences = preferenceService.getPreferences(userId);
+
+        System.out.println("*************************");
         return new ResponseEntity<>(preferences, HttpStatus.OK);
     }
 

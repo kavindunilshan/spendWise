@@ -10,7 +10,7 @@ import lombok.ToString;
 
 
 @Entity
-@Table(name="`user`")
+@Table(name="`preferences`")
 @Getter
 @Setter
 @ToString
@@ -25,8 +25,8 @@ public class Preferences {
     private Boolean isDarkMode;
 
     @Column()
-    private String isIncomePieChart;
+    private Boolean isIncomePieChart;
 
     @Column()
-    private String isExpensePieChart;
+    private Boolean isExpensePieChart;
 }

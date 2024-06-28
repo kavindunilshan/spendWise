@@ -12,6 +12,11 @@ public class UserService {
     private UserRepository userRepository;
 
     public User registerUser(User user) {
+
+        if(userRepository.findById(user.getUserId()).isPresent()) {
+            throw new NotFoundException("User already exist");
+        }
+
         return userRepository.save(user);
     }
 
