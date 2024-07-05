@@ -5,6 +5,7 @@ import com.app.spendWise.service.TransactionService;
 import com.app.spendWise.utils.CategoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/transactions")
+@RequestMapping(path = "/api/private/transactions", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TransactionController {
 
     @Autowired
