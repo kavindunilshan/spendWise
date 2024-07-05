@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +24,7 @@ public class TransactionService {
     }
 
     public List<Transaction> getTransactionById(String  userId) {
-        return transactionRepository.findByUserUserId(userId);
+        return transactionRepository.findByUserUserIdOrderByTimestampDesc(userId);
     }
 
     public List<Transaction> getTransactions() {
@@ -102,11 +101,29 @@ public class TransactionService {
         Transaction existingTransaction = transactionRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Transaction not found"));
 
-        existingTransaction.setCategory(newTransaction.getCategory());
-        existingTransaction.setCustomCategory(newTransaction.getCustomCategory());
-        existingTransaction.setUser(newTransaction.getUser());
-        existingTransaction.setTimestamp(newTransaction.getTimestamp());
-        existingTransaction.setDescription(newTransaction.getDescription());
+        if (newTransaction.getCategory() != null) {
+            existingTransaction.setCategory(newTransaction.getCategory());
+        }
+
+        if (newTransaction.getCustomCategory() != null) {
+            existingTransaction.setCustomCategory(newTransaction.getCustomCategory());
+        }
+
+        if (newTransaction.getDate() != null) {
+            existingTransaction.setDate(newTransaction.getDate());
+        }
+
+        if (newTransaction.getTimestamp() != null) {
+            existingTransaction.setTimestamp(newTransaction.getTimestamp());
+        }
+
+        if (newTransaction.getDescription() != null) {
+            existingTransaction.setDescription(newTransaction.getDescription());
+        }
+
+        if (newTransaction.getAmount() != 0) {
+            existingTransaction.setAmount(newTransaction.getAmount());
+        }
 
         return transactionRepository.save(existingTransaction);
     }
