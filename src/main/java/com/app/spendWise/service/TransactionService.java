@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,9 +85,7 @@ public class TransactionService {
         return monthlyData;
     }
 
-    public Map<String, Double> getExpenseBreakdownByCategory(String userId, CategoryType type) {
-        List<Transaction> transactions = transactionRepository.findByUserUserIdAndCategoryType(userId, type);
-
+    public  Map<String, Double> calculateBreakdown(List<Transaction> transactions) {
         Map<String, Double> expenseBreakdown = new HashMap<>();
 
         // Calculate sum of amounts per category
@@ -95,6 +96,27 @@ public class TransactionService {
         }
 
         return expenseBreakdown;
+    }
+
+    public Map<String, Double> getExpenseBreakdownByCategory(String userId, CategoryType type) {
+        List<Transaction> transactions = transactionRepository.findByUserUserIdAndCategoryType(userId, type);
+
+        return calculateBreakdown(transactions);
+    }
+
+    public Map<String, Double> getExpenseBreakdownByCategoryAndMonth(String userId, CategoryType type, String month) {
+        // Parse month string to YearMonth
+        YearMonth yearMonth = YearMonth.parse(month, DateTimeFormatter.ofPattern("MM yyyy"));
+
+        // Calculate start and end of month LocalDateTime
+        LocalDateTime startOfMonth = yearMonth.atDay(1).atStartOfDay();
+        LocalDateTime endOfMonth = yearMonth.atEndOfMonth().atTime(23, 59, 59, 999999999);
+
+        // Fetch transactions for the specified month
+        List<Transaction> transactions = transactionRepository.findByUserUserIdAndCategoryTypeAndDateBetween(
+                userId, type, startOfMonth, endOfMonth);
+
+        return calculateBreakdown(transactions);
     }
 
     public Transaction updateTransaction(int id, Transaction newTransaction) {

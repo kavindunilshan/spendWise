@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -33,6 +34,9 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     List<Object[]> findMonthlySumsByUserUserIdAndCategoryType(@Param("userId") String userId,
                                                               @Param("categoryType") CategoryType categoryType,
                                                               @Param("months") int months);
+
+    List<Transaction> findByUserUserIdAndCategoryTypeAndDateBetween(
+            String userId, CategoryType categoryType, LocalDateTime startDate, LocalDateTime endDate);
 
 
 }

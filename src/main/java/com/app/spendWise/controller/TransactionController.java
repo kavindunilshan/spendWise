@@ -5,6 +5,7 @@ import com.app.spendWise.service.TransactionService;
 import com.app.spendWise.utils.CategoryType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/transactions")
+@RequestMapping(path = "/api/private/transactions", produces = MediaType.APPLICATION_JSON_VALUE)
 public class TransactionController {
 
     @Autowired
@@ -51,9 +52,20 @@ public class TransactionController {
     }
 
     @GetMapping("/{userId}/{type}/breakdown")
-    public Map<String, Double> getExpenseBreakdownByCategory(@PathVariable String userId, @PathVariable CategoryType type) {
-        return transactionService.getExpenseBreakdownByCategory(userId, type);
+    public Map<String, Double> getExpenseBreakdownByCategory(
+            @PathVariable String userId,
+            @PathVariable CategoryType type,
+            @RequestParam(name = "isMonthly", required = false, defaultValue = "false") boolean isMonthly,
+            @RequestParam(name = "month", required = false) String month) {
+
+        if (isMonthly && month != null) {
+            return transactionService.getExpenseBreakdownByCategoryAndMonth(userId, type, month);
+        } else {
+            // Process general breakdown based on type
+            return transactionService.getExpenseBreakdownByCategory(userId, type);
+        }
     }
+
 
     @GetMapping("/{userId}/monthly/{months}")
     public ResponseEntity<HashMap<String, HashMap<String, Double>>> getMonthlyExpensesByUserIdAndCategoryType(@PathVariable String userId,
