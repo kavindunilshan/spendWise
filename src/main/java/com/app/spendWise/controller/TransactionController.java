@@ -52,9 +52,20 @@ public class TransactionController {
     }
 
     @GetMapping("/{userId}/{type}/breakdown")
-    public Map<String, Double> getExpenseBreakdownByCategory(@PathVariable String userId, @PathVariable CategoryType type) {
-        return transactionService.getExpenseBreakdownByCategory(userId, type);
+    public Map<String, Double> getExpenseBreakdownByCategory(
+            @PathVariable String userId,
+            @PathVariable CategoryType type,
+            @RequestParam(name = "isMonthly", required = false, defaultValue = "false") boolean isMonthly,
+            @RequestParam(name = "month", required = false) String month) {
+
+        if (isMonthly && month != null) {
+            return transactionService.getExpenseBreakdownByCategoryAndMonth(userId, type, month);
+        } else {
+            // Process general breakdown based on type
+            return transactionService.getExpenseBreakdownByCategory(userId, type);
+        }
     }
+
 
     @GetMapping("/{userId}/monthly/{months}")
     public ResponseEntity<HashMap<String, HashMap<String, Double>>> getMonthlyExpensesByUserIdAndCategoryType(@PathVariable String userId,
