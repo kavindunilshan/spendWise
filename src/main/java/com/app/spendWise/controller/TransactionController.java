@@ -58,10 +58,12 @@ public class TransactionController {
             @RequestParam(name = "isMonthly", required = false, defaultValue = "false") boolean isMonthly,
             @RequestParam(name = "month", required = false) String month) {
 
-        if (isMonthly && month != null) {
+        if (isMonthly && (!month.isEmpty())) {
+            System.out.println("Month: " + month + "isMonthly: " + isMonthly + "Type: " + type);
             return transactionService.getExpenseBreakdownByCategoryAndMonth(userId, type, month);
         } else {
             // Process general breakdown based on type
+            System.out.println("second path");
             return transactionService.getExpenseBreakdownByCategory(userId, type);
         }
     }
