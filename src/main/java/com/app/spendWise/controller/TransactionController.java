@@ -41,7 +41,6 @@ public class TransactionController {
     @GetMapping("/{userId}/last-five")
     public ResponseEntity<List<Transaction>> getLastFiveTransactions(@PathVariable String userId) {
         List<Transaction> transactions = transactionService.getLastFiveTransactions(userId);
-        System.out.println("here" + transactions);
 
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
@@ -59,11 +58,8 @@ public class TransactionController {
             @RequestParam(name = "month", required = false) String month) {
 
         if (isMonthly && (!month.isEmpty())) {
-            System.out.println("Month: " + month + "isMonthly: " + isMonthly + "Type: " + type);
             return transactionService.getExpenseBreakdownByCategoryAndMonth(userId, type, month);
         } else {
-            // Process general breakdown based on type
-            System.out.println("second path");
             return transactionService.getExpenseBreakdownByCategory(userId, type);
         }
     }

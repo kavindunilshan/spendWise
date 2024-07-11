@@ -24,7 +24,7 @@ public class PreferenceController {
     public ResponseEntity<Preferences> getPreferences(@PathVariable String userId) {
         Preferences preferences = preferenceService.getPreferences(userId);
 
-        System.out.println("*************************");
+
         return new ResponseEntity<>(preferences, HttpStatus.OK);
     }
 
