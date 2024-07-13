@@ -32,6 +32,7 @@ public class Preferences {
     @Column()
     private Boolean isExpensePieChart;
 
-    @Column()
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
     private DataViewPeriod dataViewPeriod;
 }

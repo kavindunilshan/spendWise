@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
@@ -24,10 +25,10 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     List<Transaction> findByUserUserIdAndCategoryType(String user_userId, CategoryType category_type);
 
     @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.user.userId = :userId AND t.category.type = :categoryType")
-    BigDecimal sumAmountsByUserIdAndCategoryType(@Param("userId") String userId, @Param("categoryType") CategoryType categoryType);
+    Optional<BigDecimal> sumAmountsByUserIdAndCategoryType(@Param("userId") String userId, @Param("categoryType") CategoryType categoryType);
 
     @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.user.userId = :userId AND t.category.type = :categoryType AND t.date >= :startDate AND t.date < :endDate")
-    BigDecimal sumAmountsByUserIdCategoryTypeAndMonth(@Param("userId") String userId, @Param("categoryType") CategoryType categoryType, @Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
+    Optional<BigDecimal> sumAmountsByUserIdCategoryTypeAndMonth(@Param("userId") String userId, @Param("categoryType") CategoryType categoryType, @Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
 
     @Query("SELECT EXTRACT(YEAR FROM t.date) as year, EXTRACT(MONTH FROM t.date) as month, SUM(t.amount) as total " +
             "FROM Transaction t WHERE t.user.userId = :userId AND t.category.type = :categoryType " +

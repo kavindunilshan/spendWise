@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -48,22 +48,35 @@ public class TransactionService {
 
         // DataViewPeriod enum
         if (period.equals(DataViewPeriod.ALL)) {
-            income = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.INCOME).doubleValue();
-            expenses = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.EXPENSE).doubleValue();
+            income = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.INCOME)
+                    .map(BigDecimal::doubleValue)
+                    .orElse(0.0);
+            expenses = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.EXPENSE)
+                    .map(BigDecimal::doubleValue)
+                    .orElse(0.0);
         } else if (period.equals(DataViewPeriod.MONTHLY)) {
             YearMonth yearMonth = YearMonth.parse(periodValue, DateTimeFormatter.ofPattern("MM yyyy"));
             LocalDateTime startOfMonth = yearMonth.atDay(1).atStartOfDay();
             LocalDateTime endOfMonth = yearMonth.atEndOfMonth().atTime(23, 59, 59, 999999999);
-            income = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.INCOME, startOfMonth, endOfMonth).doubleValue();
-            expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfMonth, endOfMonth).doubleValue();
 
+            income = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.INCOME, startOfMonth, endOfMonth)
+                    .map(BigDecimal::doubleValue)
+                    .orElse(0.0);
+            expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfMonth, endOfMonth)
+                    .map(BigDecimal::doubleValue)
+                    .orElse(0.0);
 
         } else if (period.equals(DataViewPeriod.YEARLY)) {
             int year = Integer.parseInt(periodValue);
             LocalDateTime startOfYear = LocalDateTime.of(year, 1, 1, 0, 0, 0);
             LocalDateTime endOfYear = LocalDateTime.of(year, 12, 31, 23, 59, 59, 999999999);
-            income = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.INCOME, startOfYear, endOfYear).doubleValue();
-            expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfYear, endOfYear).doubleValue();
+
+            income = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.INCOME, startOfYear, endOfYear)
+                    .map(BigDecimal::doubleValue)
+                    .orElse(0.0);;
+            expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfYear, endOfYear)
+                    .map(BigDecimal::doubleValue)
+                    .orElse(0.0);;
         }
 
         double pocket = income - expenses;
