@@ -26,6 +26,9 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.user.userId = :userId AND t.category.type = :categoryType")
     BigDecimal sumAmountsByUserIdAndCategoryType(@Param("userId") String userId, @Param("categoryType") CategoryType categoryType);
 
+    @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.user.userId = :userId AND t.category.type = :categoryType AND t.date >= :startDate AND t.date < :endDate")
+    BigDecimal sumAmountsByUserIdCategoryTypeAndMonth(@Param("userId") String userId, @Param("categoryType") CategoryType categoryType, @Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
+
     @Query("SELECT EXTRACT(YEAR FROM t.date) as year, EXTRACT(MONTH FROM t.date) as month, SUM(t.amount) as total " +
             "FROM Transaction t WHERE t.user.userId = :userId AND t.category.type = :categoryType " +
             "GROUP BY EXTRACT(YEAR FROM t.date), EXTRACT(MONTH FROM t.date) " +

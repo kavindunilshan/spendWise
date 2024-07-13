@@ -50,6 +50,12 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.getPocketMoney(userId));
     }
 
+    @GetMapping("/pocket/{userId}/monthly/{month}")
+    public ResponseEntity<HashMap<String,Double>> getPocketMoneyMonthly(@PathVariable String userId
+            , @PathVariable String month) {
+        return ResponseEntity.ok(transactionService.getPocketMoneyForMonth(userId, month));
+    }
+
     @GetMapping("/{userId}/{type}/breakdown")
     public Map<String, Double> getExpenseBreakdownByCategory(
             @PathVariable String userId,

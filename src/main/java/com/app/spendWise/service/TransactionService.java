@@ -59,6 +59,36 @@ public class TransactionService {
         return pocketMoney;
     }
 
+    public HashMap<String, Double> getPocketMoneyForMonth(String userId, String month) {
+        // Parse month string to YearMonth
+        YearMonth yearMonth = YearMonth.parse(month, DateTimeFormatter.ofPattern("MM yyyy"));
+
+        // Calculate start and end of month LocalDateTime
+        LocalDateTime startOfMonth = yearMonth.atDay(1).atStartOfDay();
+        LocalDateTime endOfMonth = yearMonth.atEndOfMonth().atTime(23, 59, 59, 999999999);
+
+        // Hashmap
+        HashMap<String, Double> pocketMoney = new HashMap<>();
+
+        System.out.println("Start of month: " + startOfMonth + " End of month: " + endOfMonth);
+
+        // Income
+        double income = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.INCOME, startOfMonth, endOfMonth).doubleValue();
+
+        // Expenses
+        double expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfMonth, endOfMonth).doubleValue();
+
+        // Pocket Money
+        double pocket = income - expenses;
+
+        // Put values in hashmap
+        pocketMoney.put("income", income);
+        pocketMoney.put("expenses", expenses);
+        pocketMoney.put("pocket", pocket);
+
+        return pocketMoney;
+    }
+
     public HashMap<String, HashMap<String, Double>> getMonthlyDataByUserIdAndCategoryType(String userId, int months) {
         HashMap<String, HashMap<String, Double>> monthlyData = new HashMap<>();
         for(CategoryType type: CategoryType.values()) {
