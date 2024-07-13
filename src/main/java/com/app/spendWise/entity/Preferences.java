@@ -1,5 +1,6 @@
 package com.app.spendWise.entity;
 
+import com.app.spendWise.utils.DataViewPeriod;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,4 +31,7 @@ public class Preferences {
 
     @Column()
     private Boolean isExpensePieChart;
+
+    @Column()
+    private DataViewPeriod dataViewPeriod;
 }
