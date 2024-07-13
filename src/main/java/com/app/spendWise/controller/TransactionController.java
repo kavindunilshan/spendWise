@@ -3,6 +3,7 @@ package com.app.spendWise.controller;
 import com.app.spendWise.entity.Transaction;
 import com.app.spendWise.service.TransactionService;
 import com.app.spendWise.utils.CategoryType;
+import com.app.spendWise.utils.DataViewPeriod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -45,15 +46,11 @@ public class TransactionController {
         return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 
-    @GetMapping("/pocket/{userId}")
-    public ResponseEntity<HashMap<String,Double>> getPocketMoney(@PathVariable String userId) {
-        return ResponseEntity.ok(transactionService.getPocketMoney(userId));
-    }
-
-    @GetMapping("/pocket/{userId}/monthly/{month}")
-    public ResponseEntity<HashMap<String,Double>> getPocketMoneyMonthly(@PathVariable String userId
-            , @PathVariable String month) {
-        return ResponseEntity.ok(transactionService.getPocketMoneyForMonth(userId, month));
+    @GetMapping("/pocket/{userId}/{period}/{value}")
+    public ResponseEntity<HashMap<String,Double>> getPocketMoneyMonthly(@PathVariable String userId,
+                                                                        @PathVariable DataViewPeriod period,
+                                                                        @PathVariable String value) {
+        return ResponseEntity.ok(transactionService.getPocketByPeriod(userId, period, value));
     }
 
     @GetMapping("/{userId}/{type}/breakdown")

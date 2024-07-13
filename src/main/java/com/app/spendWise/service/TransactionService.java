@@ -5,10 +5,12 @@ import com.app.spendWise.exception.NotFoundException;
 import com.app.spendWise.repository.TransactionRepository;
 import com.app.spendWise.utils.CategoryType;
 import com.app.spendWise.utils.CommonUtils;
+import com.app.spendWise.utils.DataViewPeriod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
@@ -38,50 +40,33 @@ public class TransactionService {
         return transactionRepository.findLastFiveTransactionsByUserId(userId, PageRequest.of(0, 5));
     }
 
-    public HashMap<String, Double> getPocketMoney(String userId) {
-        // Hashmap
+    public HashMap<String, Double> getPocketByPeriod(String userId, DataViewPeriod period, String periodValue) {
         HashMap<String, Double> pocketMoney = new HashMap<>();
 
-        // Income
-        double income = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.INCOME).doubleValue();
+        double income = 0;
+        double expenses = 0;
 
-        // Expenses
-        double expenses = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.EXPENSE).doubleValue();
+        // DataViewPeriod enum
+        if (period.equals(DataViewPeriod.ALL)) {
+            income = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.INCOME).doubleValue();
+            expenses = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.EXPENSE).doubleValue();
+        } else if (period.equals(DataViewPeriod.MONTHLY)) {
+            YearMonth yearMonth = YearMonth.parse(periodValue, DateTimeFormatter.ofPattern("MM yyyy"));
+            LocalDateTime startOfMonth = yearMonth.atDay(1).atStartOfDay();
+            LocalDateTime endOfMonth = yearMonth.atEndOfMonth().atTime(23, 59, 59, 999999999);
+            income = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.INCOME, startOfMonth, endOfMonth).doubleValue();
+            expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfMonth, endOfMonth).doubleValue();
 
-        // Pocket Money
+
+        } else if (period.equals(DataViewPeriod.YEARLY)) {
+            int year = Integer.parseInt(periodValue);
+            LocalDateTime startOfYear = LocalDateTime.of(year, 1, 1, 0, 0, 0);
+            LocalDateTime endOfYear = LocalDateTime.of(year, 12, 31, 23, 59, 59, 999999999);
+            income = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.INCOME, startOfYear, endOfYear).doubleValue();
+            expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfYear, endOfYear).doubleValue();
+        }
+
         double pocket = income - expenses;
-
-        // Put values in hashmap
-        pocketMoney.put("income", income);
-        pocketMoney.put("expenses", expenses);
-        pocketMoney.put("pocket", pocket);
-
-        return pocketMoney;
-    }
-
-    public HashMap<String, Double> getPocketMoneyForMonth(String userId, String month) {
-        // Parse month string to YearMonth
-        YearMonth yearMonth = YearMonth.parse(month, DateTimeFormatter.ofPattern("MM yyyy"));
-
-        // Calculate start and end of month LocalDateTime
-        LocalDateTime startOfMonth = yearMonth.atDay(1).atStartOfDay();
-        LocalDateTime endOfMonth = yearMonth.atEndOfMonth().atTime(23, 59, 59, 999999999);
-
-        // Hashmap
-        HashMap<String, Double> pocketMoney = new HashMap<>();
-
-        System.out.println("Start of month: " + startOfMonth + " End of month: " + endOfMonth);
-
-        // Income
-        double income = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.INCOME, startOfMonth, endOfMonth).doubleValue();
-
-        // Expenses
-        double expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfMonth, endOfMonth).doubleValue();
-
-        // Pocket Money
-        double pocket = income - expenses;
-
-        // Put values in hashmap
         pocketMoney.put("income", income);
         pocketMoney.put("expenses", expenses);
         pocketMoney.put("pocket", pocket);
