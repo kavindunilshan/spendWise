@@ -42,5 +42,8 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
     List<Transaction> findByUserUserIdAndCategoryTypeAndDateBetween(
             String userId, CategoryType categoryType, LocalDateTime startDate, LocalDateTime endDate);
 
+    List<Transaction> findByUserUserIdAndDateBetween(
+            String userId, LocalDateTime startDate, LocalDateTime endDate);
+
 
 }

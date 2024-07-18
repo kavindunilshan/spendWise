@@ -63,6 +63,14 @@ public class TransactionController {
         return ResponseEntity.ok(transactions);
     }
 
+    @GetMapping("/{userId}/between/{start}/{end}")
+    public ResponseEntity<List<Transaction>> getTransactionsBetweenPeriod(@PathVariable String userId,
+                                                                         @PathVariable LocalDateTime start,
+                                                                         @PathVariable LocalDateTime end) {
+        List<Transaction> transactions = transactionService.getTransactionsBetweenPeriod(userId, start, end);
+        return ResponseEntity.ok(transactions);
+    }
+
 
     @GetMapping("/{userId}/{type}/breakdown")
     public Map<String, Double> getExpenseBreakdownByCategory(

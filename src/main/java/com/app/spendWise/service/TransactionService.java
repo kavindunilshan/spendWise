@@ -44,6 +44,10 @@ public class TransactionService {
         return transactionRepository.findByUserUserIdAndCategoryTypeAndDateBetween(userId, type, start, end);
     }
 
+    public List<Transaction> getTransactionsBetweenPeriod(String userId, LocalDateTime start, LocalDateTime end) {
+        return transactionRepository.findByUserUserIdAndDateBetween(userId, start, end);
+    }
+
     public HashMap<String, Double> getPocketByPeriod(String userId, DataViewPeriod period, String periodValue) {
         HashMap<String, Double> pocketMoney = new HashMap<>();
 
