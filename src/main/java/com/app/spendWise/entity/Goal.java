@@ -13,10 +13,9 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Goal {
-    // column names ==> goal_id, user_id, amount, period (monthly, yearly), goaltype, categorytype, categoryid
 
-    @Column
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int goalId;
 
     @Column(length = 30)

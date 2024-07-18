@@ -13,7 +13,6 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Preferences {
-    // userId, currency, country, darkMode
 
     @Id
     @Column(length = 30)
