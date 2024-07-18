@@ -1,6 +1,5 @@
 package com.app.spendWise.entity;
 
-import com.app.spendWise.utils.CategoryType;
 import com.app.spendWise.utils.DataViewPeriod;
 import com.app.spendWise.utils.GoalType;
 import jakarta.persistence.*;
@@ -37,11 +36,12 @@ public class Goal {
     private DataViewPeriod period;
 
     @Column
-    private GoalType goalType;
+    private GoalType type;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "categoryId", insertable = false, updatable = false)
+    private Category category;
 
     @Column
-    private CategoryType categoryType;
-
-    @Column
-    private int categoryId;
+    private Integer category_id;
 }
