@@ -1,19 +1,17 @@
 package com.app.spendWise.controller;
 
 import com.app.spendWise.entity.Goal;
-import com.app.spendWise.entity.Transaction;
 import com.app.spendWise.service.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/api/private/goals")
+@RestController
+@RequestMapping(path = "/api/private/goal", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GoalController {
 
     @Autowired

@@ -3,11 +3,16 @@ package com.app.spendWise.entity;
 import com.app.spendWise.utils.CategoryType;
 import com.app.spendWise.utils.DataViewPeriod;
 import com.app.spendWise.utils.GoalType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
+@Entity
+@Table(name = "goal")
+@Getter
+@Setter
+@ToString
 public class Goal {
     // column names ==> goal_id, user_id, amount, period (monthly, yearly), goaltype, categorytype, categoryid
 
