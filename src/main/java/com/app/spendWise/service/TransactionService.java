@@ -40,11 +40,16 @@ public class TransactionService {
         return transactionRepository.findLastFiveTransactionsByUserId(userId, PageRequest.of(0, 5));
     }
 
+    public List<Transaction> getTransactionsBetweenPeriod(String userId, CategoryType type, LocalDateTime start, LocalDateTime end) {
+        return transactionRepository.findByUserUserIdAndCategoryTypeAndDateBetween(userId, type, start, end);
+    }
+
     public HashMap<String, Double> getPocketByPeriod(String userId, DataViewPeriod period, String periodValue) {
         HashMap<String, Double> pocketMoney = new HashMap<>();
 
         double income = 0;
         double expenses = 0;
+        double savings = 0;
 
         // DataViewPeriod enum
         if (period.equals(DataViewPeriod.ALL)) {
@@ -52,6 +57,9 @@ public class TransactionService {
                     .map(BigDecimal::doubleValue)
                     .orElse(0.0);
             expenses = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.EXPENSE)
+                    .map(BigDecimal::doubleValue)
+                    .orElse(0.0);
+            savings = transactionRepository.sumAmountsByUserIdAndCategoryType(userId, CategoryType.SAVING)
                     .map(BigDecimal::doubleValue)
                     .orElse(0.0);
         } else if (period.equals(DataViewPeriod.MONTHLY)) {
@@ -65,6 +73,9 @@ public class TransactionService {
             expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfMonth, endOfMonth)
                     .map(BigDecimal::doubleValue)
                     .orElse(0.0);
+            savings = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.SAVING, startOfMonth, endOfMonth)
+                    .map(BigDecimal::doubleValue)
+                    .orElse(0.0);
 
         } else if (period.equals(DataViewPeriod.YEARLY)) {
             int year = Integer.parseInt(periodValue);
@@ -73,14 +84,18 @@ public class TransactionService {
 
             income = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.INCOME, startOfYear, endOfYear)
                     .map(BigDecimal::doubleValue)
-                    .orElse(0.0);;
+                    .orElse(0.0);
             expenses = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.EXPENSE, startOfYear, endOfYear)
                     .map(BigDecimal::doubleValue)
-                    .orElse(0.0);;
+                    .orElse(0.0);
+            savings = transactionRepository.sumAmountsByUserIdCategoryTypeAndMonth(userId, CategoryType.SAVING, startOfYear, endOfYear)
+                    .map(BigDecimal::doubleValue)
+                    .orElse(0.0);
         }
 
         double pocket = income - expenses;
         pocketMoney.put("income", income);
+        pocketMoney.put("savings", savings);
         pocketMoney.put("expenses", expenses);
         pocketMoney.put("pocket", pocket);
 
@@ -134,15 +149,24 @@ public class TransactionService {
 
     public Map<String, Double> getExpenseBreakdownByCategoryAndMonth(String userId, CategoryType type, String month) {
         // Parse month string to YearMonth
-        YearMonth yearMonth = YearMonth.parse(month, DateTimeFormatter.ofPattern("MM yyyy"));
+        YearMonth yearMonth;
 
-        // Calculate start and end of month LocalDateTime
-        LocalDateTime startOfMonth = yearMonth.atDay(1).atStartOfDay();
-        LocalDateTime endOfMonth = yearMonth.atEndOfMonth().atTime(23, 59, 59, 999999999);
+        LocalDateTime start = null;
+        LocalDateTime end = null;
+
+        if (month.length() == 4) {
+            int year = Integer.parseInt(month);
+            start = LocalDateTime.of(year, 1, 1, 0, 0, 0);
+            end = LocalDateTime.of(year, 12, 31, 23, 59, 59, 999999999);
+        } else {
+            yearMonth = YearMonth.parse(month, DateTimeFormatter.ofPattern("MM yyyy"));
+            start = yearMonth.atDay(1).atStartOfDay();
+            end = yearMonth.atEndOfMonth().atTime(23, 59, 59, 999999999);
+        }
 
         // Fetch transactions for the specified month
         List<Transaction> transactions = transactionRepository.findByUserUserIdAndCategoryTypeAndDateBetween(
-                userId, type, startOfMonth, endOfMonth);
+                userId, type, start, end);
 
         return calculateBreakdown(transactions);
     }

@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,6 +53,16 @@ public class TransactionController {
                                                                         @PathVariable String value) {
         return ResponseEntity.ok(transactionService.getPocketByPeriod(userId, period, value));
     }
+
+    @GetMapping("/{userId}/{type}/between/{start}/{end}")
+    public ResponseEntity<List<Transaction>> getTransactionsBetweenPeriod(@PathVariable String userId,
+                                                                         @PathVariable CategoryType type,
+                                                                         @PathVariable LocalDateTime start,
+                                                                         @PathVariable LocalDateTime end) {
+        List<Transaction> transactions = transactionService.getTransactionsBetweenPeriod(userId, type, start, end);
+        return ResponseEntity.ok(transactions);
+    }
+
 
     @GetMapping("/{userId}/{type}/breakdown")
     public Map<String, Double> getExpenseBreakdownByCategory(
