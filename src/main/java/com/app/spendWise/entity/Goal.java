@@ -18,6 +18,9 @@ public class Goal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int goalId;
 
+    @Column
+    private String name;
+
     @Column(length = 30)
     private String user_id;
 
@@ -29,7 +32,7 @@ public class Goal {
     private double amount;
 
     @Column
-    private char sign;
+    private String sign;
 
     @Column
     private DataViewPeriod period;
