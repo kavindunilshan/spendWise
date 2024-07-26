@@ -25,4 +25,7 @@ public class User {
 
     @Column()
     private String country;
+
+    @Column()
+    private boolean isAdmin;
 }
