@@ -29,4 +29,10 @@ public class GoalController {
         return new ResponseEntity<>(goals, HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Goal> updateGoal(@PathVariable int id, @RequestBody Goal goal) {
+        Goal updatedGoal = goalService.updateGoal(id, goal);
+        return new ResponseEntity<>(updatedGoal, HttpStatus.OK);
+    }
+
 }
