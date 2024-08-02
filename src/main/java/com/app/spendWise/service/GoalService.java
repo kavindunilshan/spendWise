@@ -20,4 +20,13 @@ public class GoalService {
     public List<Goal> getGoalsByUserId(String userId) {
         return goalRepository.findByUserUserId(userId);
     }
+
+    public Goal updateGoal(int id, Goal goal) {
+        Goal existingGoal = goalRepository.findById(id).orElse(null);
+        goal.setGoalId(id);
+        if (existingGoal == null) {
+            return null;
+        }
+        return goalRepository.save(goal);
+    }
 }

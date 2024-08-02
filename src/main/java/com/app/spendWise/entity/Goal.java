@@ -1,7 +1,9 @@
 package com.app.spendWise.entity;
 
+import com.app.spendWise.utils.CategoryType;
 import com.app.spendWise.utils.DataViewPeriod;
 import com.app.spendWise.utils.GoalType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,6 +28,7 @@ public class Goal {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "userId", insertable = false, updatable = false)
+    @JsonIgnore
     private User user;
 
     @Column(nullable = false)
@@ -43,6 +46,9 @@ public class Goal {
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "categoryId", insertable = false, updatable = false)
     private Category category;
+
+    @Column(nullable = false)
+    private CategoryType transactionType;
 
     @Column
     private Integer category_id;
