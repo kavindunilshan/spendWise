@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/private/goal", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/api/private/goals", produces = MediaType.APPLICATION_JSON_VALUE)
 public class GoalController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class GoalController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<List<Goal>> getGoalsByUserId(String userId) {
+    public ResponseEntity<List<Goal>> getGoalsByUserId(@PathVariable String userId) {
         List<Goal> goals = goalService.getGoalsByUserId(userId);
         return new ResponseEntity<>(goals, HttpStatus.OK);
     }
