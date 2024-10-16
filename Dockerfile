@@ -11,4 +11,4 @@ COPY target/spendWise-0.0.1.jar /app/spendWise-0.0.1.jar
 EXPOSE 8080
 
 # Command to run the Spring Boot app
-ENTRYPOINT ["java", "-jar", "/app/myapp.jar"]
+ENTRYPOINT ["java", "-jar", "/app/spendWise-0.0.1.jar"]
