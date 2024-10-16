@@ -1,13 +1,13 @@
 package com.app.spendWise.controller;
 
+import lombok.Getter;
+
+@Getter
 public class Message {
-    private String message;
+    private final String message;
 
     public Message(String message) {
         this.message = message;
     }
 
-    public String getMessage() {
-        return message;
-    }
 }
