@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>com.app</groupId>
 	<artifactId>spendWise</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>spendWise</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
