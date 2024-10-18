@@ -11,4 +11,4 @@ INSERT INTO category (category_id, name, type) VALUES
                                                      (10, 'Vacation Fund', 'SAVING'),
                                                      (11, 'Retirement Fund', 'SAVING'),
                                                      (12, 'Education Fund', 'SAVING')
-    ON CONFLICT (category_id) DO NOTHING;
+ON CONFLICT (category_id) DO NOTHING;
