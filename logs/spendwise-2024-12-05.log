@@ -1,0 +1,74 @@
+2024-12-05 23:25:55 - Starting SpendWiseApplication using Java 17.0.11 with PID 2560 (C:\Users\ASUS\IdeaProjects\spendwise\target\classes started by ASUS in C:\Users\ASUS\IdeaProjects\spendwise)
+2024-12-05 23:25:55 - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-12-05 23:25:55 - No active profile set, falling back to 1 default profile: "default"
+2024-12-05 23:25:55 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-05 23:25:55 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-05 23:25:56 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-05 23:25:56 - Finished Spring Data repository scanning in 68 ms. Found 7 JPA repository interfaces.
+2024-12-05 23:25:56 - Tomcat initialized with port 8080 (http)
+2024-12-05 23:25:56 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-05 23:25:56 - Starting service [Tomcat]
+2024-12-05 23:25:56 - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-12-05 23:25:56 - Initializing Spring embedded WebApplicationContext
+2024-12-05 23:25:56 - Root WebApplicationContext: initialization completed in 1664 ms
+2024-12-05 23:25:57 - HikariPool-1 - Starting...
+2024-12-05 23:25:57 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3ba965d5
+2024-12-05 23:25:57 - HikariPool-1 - Start completed.
+2024-12-05 23:25:57 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-05 23:25:57 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-05 23:25:57 - HHH000026: Second-level cache disabled
+2024-12-05 23:25:58 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-05 23:25:58 - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-05 23:25:59 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-05 23:25:59 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-05 23:25:59 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-05 23:26:00 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-05 23:26:00 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@b703ba2, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@641c691c, org.springframework.security.web.context.SecurityContextHolderFilter@6fa04f17, org.springframework.security.web.header.HeaderWriterFilter@142658e9, org.springframework.web.filter.CorsFilter@6f0b6d6d, org.springframework.security.web.csrf.CsrfFilter@1684eb77, org.springframework.security.web.authentication.logout.LogoutFilter@25c71903, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@523b24e6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4dceb52, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@620f8024, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@8b1685, org.springframework.security.web.access.ExceptionTranslationFilter@12026905, org.springframework.security.web.access.intercept.AuthorizationFilter@595ce6fd]
+2024-12-05 23:26:01 - LiveReload server is running on port 35729
+2024-12-05 23:26:01 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-05 23:26:01 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-05 23:26:01 - Started SpendWiseApplication in 8.515 seconds (process running for 10.048)
+2024-12-05 23:26:30 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-05 23:26:30 - Initializing Servlet 'dispatcherServlet'
+2024-12-05 23:26:30 - Completed initialization in 2 ms
+2024-12-05 23:26:31 - Resolved [com.app.spendWise.exception.NotFoundException: User already exist]
+2024-12-05 23:41:19 - Resolved [com.app.spendWise.exception.NotFoundException: User not found]
+2024-12-05 23:46:09 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-05 23:46:09 - HikariPool-1 - Shutdown initiated...
+2024-12-05 23:46:09 - HikariPool-1 - Shutdown completed.
+2024-12-05 23:46:16 - Starting SpendWiseApplication using Java 17.0.11 with PID 2220 (C:\Users\ASUS\IdeaProjects\spendwise\target\classes started by ASUS in C:\Users\ASUS\IdeaProjects\spendwise)
+2024-12-05 23:46:16 - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-12-05 23:46:16 - No active profile set, falling back to 1 default profile: "default"
+2024-12-05 23:46:16 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-05 23:46:16 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-05 23:46:16 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-05 23:46:17 - Finished Spring Data repository scanning in 50 ms. Found 7 JPA repository interfaces.
+2024-12-05 23:46:17 - Tomcat initialized with port 8080 (http)
+2024-12-05 23:46:17 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-05 23:46:17 - Starting service [Tomcat]
+2024-12-05 23:46:17 - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-12-05 23:46:17 - Initializing Spring embedded WebApplicationContext
+2024-12-05 23:46:17 - Root WebApplicationContext: initialization completed in 1285 ms
+2024-12-05 23:46:17 - HikariPool-1 - Starting...
+2024-12-05 23:46:17 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@32243429
+2024-12-05 23:46:17 - HikariPool-1 - Start completed.
+2024-12-05 23:46:17 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-05 23:46:17 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-05 23:46:18 - HHH000026: Second-level cache disabled
+2024-12-05 23:46:18 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-05 23:46:18 - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-05 23:46:19 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-05 23:46:19 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-05 23:46:19 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-05 23:46:20 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-05 23:46:20 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@493ae17, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2e004b39, org.springframework.security.web.context.SecurityContextHolderFilter@56dcf344, org.springframework.security.web.header.HeaderWriterFilter@d4a83f3, org.springframework.web.filter.CorsFilter@69764f30, org.springframework.security.web.csrf.CsrfFilter@21134662, org.springframework.security.web.authentication.logout.LogoutFilter@21295410, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@50f2e869, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2dae8195, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@66657d25, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@41f04914, org.springframework.security.web.access.ExceptionTranslationFilter@14fa5a9b, org.springframework.security.web.access.intercept.AuthorizationFilter@320e675f]
+2024-12-05 23:46:20 - LiveReload server is running on port 35729
+2024-12-05 23:46:20 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-05 23:46:20 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-05 23:46:20 - Started SpendWiseApplication in 6.177 seconds (process running for 7.149)
+2024-12-05 23:46:31 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-05 23:46:31 - Initializing Servlet 'dispatcherServlet'
+2024-12-05 23:46:31 - Completed initialization in 2 ms
+2024-12-05 23:46:32 - Resolved [com.app.spendWise.exception.NotFoundException: User not found]
+2024-12-05 23:46:59 - Resolved [com.app.spendWise.exception.NotFoundException: User not found]
+2024-12-05 23:49:03 - Resolved [com.app.spendWise.exception.NotFoundException: User not found]

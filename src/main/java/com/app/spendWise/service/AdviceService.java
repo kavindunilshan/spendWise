@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdviceService {
@@ -25,7 +26,10 @@ public class AdviceService {
     }
 
     public Advice updateAdvice(Integer id, Advice advice) {
-        advice.setId(id);
+        Optional<Advice> adviceOptional = adviceRepository.findById(id);
+        if (adviceOptional.isEmpty()) {
+            return null;
+        }
         return adviceRepository.save(advice);
     }
 
@@ -33,7 +37,11 @@ public class AdviceService {
         return adviceRepository.findById(id).orElse(null);
     }
 
-    public List<Advice> getAdvice() {
+    public List<Advice> getAllAdvices() {
         return adviceRepository.findAll();
+    }
+
+    public List<Advice> getUnAnsweredAdvices() {
+        return adviceRepository.findByAdviceIsNull();
     }
 }
