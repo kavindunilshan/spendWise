@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface AdviceRepository extends JpaRepository<Advice, Integer> {
     List<Advice> findByUserId(String userId);
+    List<Advice> findByAdviceIsNull();
 }
