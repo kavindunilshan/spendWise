@@ -8,14 +8,14 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/payment")
+@RequestMapping("/api/private/payment")
 public class PaymentController {
 
     @PostMapping("/create-payment-intent")
     public Map<String, String> createPaymentIntent() {
         try {
             Map<String, Object> params = new HashMap<>();
-            params.put("amount", 500); // $5.00 in cents
+            params.put("amount", 500);
             params.put("currency", "usd");
             params.put("payment_method_types", List.of("card"));
 
