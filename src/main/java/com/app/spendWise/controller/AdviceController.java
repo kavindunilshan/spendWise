@@ -35,13 +35,13 @@ public class AdviceController {
         return new ResponseEntity<>(advice, HttpStatus.OK);
     }
 
-    @GetMapping("/unAnswered")
+    @GetMapping("/admin/unAnswered")
     public ResponseEntity<List<Advice>> getUnAnsweredAdvices() {
         List<Advice> advice = adviceService.getUnAnsweredAdvices();
         return new ResponseEntity<>(advice, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/{id}")
     public ResponseEntity<Advice> updateAdvice(@PathVariable Integer id, @RequestBody Advice advice) {
         Advice updatedAdvice = adviceService.updateAdvice(id, advice);
         return new ResponseEntity<>(updatedAdvice, HttpStatus.OK);
