@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spendwise-bo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spendwise-bo
+  template:
+    metadata:
+      labels:
+        app: spendwise-bo
+    spec:
+      containers:
+        - name: spendwise-bo
+          image: kavindudocker/spendwise-bo:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres-db-service:5432/spendWise
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: '111111'
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spendwise-bo-service
+spec:
+  selector:
+    app: spendwise-bo
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
