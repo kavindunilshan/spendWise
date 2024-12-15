@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface MilestoneRepository extends JpaRepository<Milestone, Integer> {
-    List<Milestone> findByUser_id(String userId);
+    List<Milestone> findByUser_UserId(String userId);
 }

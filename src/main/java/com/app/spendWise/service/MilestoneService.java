@@ -13,7 +13,7 @@ public class MilestoneService {
     private MilestoneRepository milestoneRepository;
 
     public List<Milestone> getMilestones(String userId) {
-        return milestoneRepository.findByUser_id(userId);
+        return milestoneRepository.findByUser_UserId(userId);
     }
 
     public Milestone createMilestone(Milestone milestone) {
