@@ -1,0 +1,35 @@
+2024-12-21 01:23:35 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h1m54s506ms464µs800ns).
+2024-12-21 13:51:30 - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12h27m33s400ms511µs).
+2024-12-21 23:06:02 - Starting SpendWiseApplication using Java 17.0.11 with PID 6088 (C:\Users\ASUS\IdeaProjects\spendwise\target\classes started by ASUS in C:\Users\ASUS\IdeaProjects\spendwise)
+2024-12-21 23:06:02 - Running with Spring Boot v3.3.0, Spring v6.1.8
+2024-12-21 23:06:02 - No active profile set, falling back to 1 default profile: "default"
+2024-12-21 23:06:02 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-12-21 23:06:02 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-12-21 23:06:02 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-21 23:06:02 - Finished Spring Data repository scanning in 75 ms. Found 8 JPA repository interfaces.
+2024-12-21 23:06:03 - Tomcat initialized with port 8080 (http)
+2024-12-21 23:06:03 - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-21 23:06:03 - Starting service [Tomcat]
+2024-12-21 23:06:03 - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2024-12-21 23:06:03 - Initializing Spring embedded WebApplicationContext
+2024-12-21 23:06:03 - Root WebApplicationContext: initialization completed in 1570 ms
+2024-12-21 23:06:03 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-21 23:06:03 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-21 23:06:03 - HHH000026: Second-level cache disabled
+2024-12-21 23:06:04 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-21 23:06:04 - HikariPool-1 - Starting...
+2024-12-21 23:06:04 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7fb5eeb4
+2024-12-21 23:06:04 - HikariPool-1 - Start completed.
+2024-12-21 23:06:04 - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-21 23:06:05 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-21 23:06:05 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-21 23:06:05 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-21 23:06:06 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-21 23:06:06 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3758177f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6d7f47c9, org.springframework.security.web.context.SecurityContextHolderFilter@f7f0934, org.springframework.security.web.header.HeaderWriterFilter@578d6692, org.springframework.web.filter.CorsFilter@13bda97e, org.springframework.security.web.csrf.CsrfFilter@5e417646, org.springframework.security.web.authentication.logout.LogoutFilter@1008e785, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@4906f757, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@e824257, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@17a6501b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2d5f7f4e, org.springframework.security.web.access.ExceptionTranslationFilter@1ce61d59, org.springframework.security.web.access.intercept.AuthorizationFilter@1968667b]
+2024-12-21 23:06:07 - LiveReload server is running on port 35729
+2024-12-21 23:06:07 - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-21 23:06:07 - Tomcat started on port 8080 (http) with context path '/'
+2024-12-21 23:06:07 - Started SpendWiseApplication in 6.912 seconds (process running for 7.83)
+2024-12-21 23:06:14 - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-21 23:06:14 - Initializing Servlet 'dispatcherServlet'
+2024-12-21 23:06:14 - Completed initialization in 1 ms
