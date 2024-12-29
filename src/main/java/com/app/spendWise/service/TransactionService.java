@@ -2,6 +2,9 @@ package com.app.spendWise.service;
 
 import com.app.spendWise.entity.Transaction;
 import com.app.spendWise.exception.NotFoundException;
+import com.app.spendWise.observer.TransactionEvent;
+import com.app.spendWise.observer.TransactionEventType;
+import com.app.spendWise.observer.TransactionNotifier;
 import com.app.spendWise.repository.TransactionRepository;
 import com.app.spendWise.utils.CategoryType;
 import com.app.spendWise.utils.CommonUtils;
@@ -24,6 +27,9 @@ public class TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Autowired
+    private TransactionNotifier transactionNotifier;
+
     public Transaction createTransaction(Transaction transaction) {
         return transactionRepository.save(transaction);
     }
@@ -37,6 +43,8 @@ public class TransactionService {
     }
 
     public List<Transaction> getLastFiveTransactions(String userId) {
+        TransactionEvent event = new TransactionEvent(null, TransactionEventType.TRANSACTION_ADDED);
+        transactionNotifier.notifyObservers(event);
         return transactionRepository.findLastFiveTransactionsByUserId(userId, PageRequest.of(0, 5));
     }
 
