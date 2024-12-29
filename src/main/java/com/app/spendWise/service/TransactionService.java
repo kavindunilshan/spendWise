@@ -2,6 +2,9 @@ package com.app.spendWise.service;
 
 import com.app.spendWise.entity.Transaction;
 import com.app.spendWise.exception.NotFoundException;
+import com.app.spendWise.observer.TransactionEvent;
+import com.app.spendWise.observer.TransactionEventType;
+import com.app.spendWise.observer.TransactionNotifier;
 import com.app.spendWise.repository.TransactionRepository;
 import com.app.spendWise.utils.CategoryType;
 import com.app.spendWise.utils.CommonUtils;
@@ -24,8 +27,18 @@ public class TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Autowired
+    private TransactionNotifier transactionNotifier;
+
     public Transaction createTransaction(Transaction transaction) {
-        return transactionRepository.save(transaction);
+        Transaction newTransaction = transactionRepository.save(transaction);
+
+        try {
+            TransactionEvent event = new TransactionEvent(newTransaction, TransactionEventType.TRANSACTION_ADDED);
+            transactionNotifier.notifyObservers(event);
+        } catch (Exception ignored) {
+        }
+        return newTransaction;
     }
 
     public List<Transaction> getTransactionById(String  userId) {
@@ -203,7 +216,15 @@ public class TransactionService {
             existingTransaction.setAmount(newTransaction.getAmount());
         }
 
-        return transactionRepository.save(existingTransaction);
+        Transaction updatedTransaction = transactionRepository.save(existingTransaction);
+
+        try {
+            TransactionEvent event = new TransactionEvent(updatedTransaction, TransactionEventType.TRANSACTION_ADDED);
+            transactionNotifier.notifyObservers(event);
+        } catch (Exception ignored) {
+        }
+
+        return updatedTransaction;
     }
 
     public void deleteTransaction(int id) {
