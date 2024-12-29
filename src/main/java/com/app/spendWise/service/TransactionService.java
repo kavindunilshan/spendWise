@@ -31,7 +31,14 @@ public class TransactionService {
     private TransactionNotifier transactionNotifier;
 
     public Transaction createTransaction(Transaction transaction) {
-        return transactionRepository.save(transaction);
+        Transaction newTransaction = transactionRepository.save(transaction);
+
+        try {
+            TransactionEvent event = new TransactionEvent(newTransaction, TransactionEventType.TRANSACTION_ADDED);
+            transactionNotifier.notifyObservers(event);
+        } catch (Exception ignored) {
+        }
+        return newTransaction;
     }
 
     public List<Transaction> getTransactionById(String  userId) {
@@ -43,8 +50,6 @@ public class TransactionService {
     }
 
     public List<Transaction> getLastFiveTransactions(String userId) {
-        TransactionEvent event = new TransactionEvent(null, TransactionEventType.TRANSACTION_ADDED);
-        transactionNotifier.notifyObservers(event);
         return transactionRepository.findLastFiveTransactionsByUserId(userId, PageRequest.of(0, 5));
     }
 
@@ -211,7 +216,15 @@ public class TransactionService {
             existingTransaction.setAmount(newTransaction.getAmount());
         }
 
-        return transactionRepository.save(existingTransaction);
+        Transaction updatedTransaction = transactionRepository.save(existingTransaction);
+
+        try {
+            TransactionEvent event = new TransactionEvent(updatedTransaction, TransactionEventType.TRANSACTION_ADDED);
+            transactionNotifier.notifyObservers(event);
+        } catch (Exception ignored) {
+        }
+
+        return updatedTransaction;
     }
 
     public void deleteTransaction(int id) {

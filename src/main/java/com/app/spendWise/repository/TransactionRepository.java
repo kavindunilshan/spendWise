@@ -46,4 +46,16 @@ public interface TransactionRepository extends JpaRepository<Transaction, Intege
             String userId, LocalDateTime startDate, LocalDateTime endDate);
 
 
+
+
+    @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.user.userId = :userId AND t.category.categoryId = :categoryId AND t.category.type = :type AND MONTH(t.date) = MONTH(CURRENT_DATE) AND YEAR(t.date) = YEAR(CURRENT_DATE)")
+    double sumTransactionsForMonth(@Param("userId") String userId, @Param("categoryId") Integer categoryId, @Param("type") CategoryType type);
+
+    @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.user.userId = :userId AND t.category.categoryId = :categoryId AND t.category.type = :type AND YEAR(t.date) = YEAR(CURRENT_DATE)")
+    double sumTransactionsForYear(@Param("userId") String userId, @Param("categoryId") Integer categoryId, @Param("type") CategoryType type);
+
+    @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.user.userId = :userId AND t.category.categoryId = :categoryId AND t.category.type = :type")
+    double sumTransactionsForAll(@Param("userId") String userId, @Param("categoryId") Integer categoryId, @Param("type") CategoryType type);
+
+
 }
