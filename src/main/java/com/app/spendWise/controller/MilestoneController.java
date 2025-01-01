@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "/api/private/milestone", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/api/private/milestones", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MilestoneController {
     @Autowired
     private MilestoneService milestoneService;
@@ -36,6 +37,7 @@ public class MilestoneController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_delete:resources')")
     public ResponseEntity<Void> deleteMilestone(@PathVariable int id) {
         milestoneService.deleteMilestone(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
