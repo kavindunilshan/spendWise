@@ -999,3 +999,25 @@ Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to no
 2025-01-01 23:36:23 - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-01-01 23:36:23 - HikariPool-1 - Shutdown initiated...
 2025-01-01 23:36:25 - HikariPool-1 - Shutdown completed.
+2025-01-01 23:38:52 - Starting SpendWiseApplicationTests using Java 17.0.11 with PID 25788 (started by ASUS in C:\Users\ASUS\IdeaProjects\spendwise)
+2025-01-01 23:38:52 - Running with Spring Boot v3.3.0, Spring v6.1.8
+2025-01-01 23:38:52 - No active profile set, falling back to 1 default profile: "default"
+2025-01-01 23:38:54 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-01 23:38:54 - Finished Spring Data repository scanning in 110 ms. Found 8 JPA repository interfaces.
+2025-01-01 23:38:55 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-01 23:38:55 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-01-01 23:38:55 - HHH000026: Second-level cache disabled
+2025-01-01 23:38:55 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-01 23:38:55 - HikariPool-1 - Starting...
+2025-01-01 23:38:58 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3d50a3d9
+2025-01-01 23:38:58 - HikariPool-1 - Start completed.
+2025-01-01 23:38:58 - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-01 23:39:00 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-01 23:39:06 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-01 23:39:07 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-01 23:39:08 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-01 23:39:09 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3bc079f1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2385ee72, org.springframework.security.web.context.SecurityContextHolderFilter@7c9be48a, org.springframework.security.web.header.HeaderWriterFilter@a1a7e28, org.springframework.web.filter.CorsFilter@16e483d9, org.springframework.security.web.csrf.CsrfFilter@6a937d6f, org.springframework.security.web.authentication.logout.LogoutFilter@2e4752cc, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@49bf8d66, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4c829699, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ae042f3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3596c09d, org.springframework.security.web.access.ExceptionTranslationFilter@6e65fc8b, org.springframework.security.web.access.intercept.AuthorizationFilter@144ad1f5]
+2025-01-01 23:39:11 - Started SpendWiseApplicationTests in 20.387 seconds (process running for 21.898)
+2025-01-01 23:39:12 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-01 23:39:12 - HikariPool-1 - Shutdown initiated...
+2025-01-01 23:39:14 - HikariPool-1 - Shutdown completed.
