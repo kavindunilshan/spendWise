@@ -749,3 +749,173 @@ java.lang.NullPointerException: Cannot invoke "com.app.spendWise.entity.User.get
 2024-12-29 15:29:46 - Tomcat started on port 8080 (http) with context path '/'
 2024-12-29 15:29:46 - Started SpendWiseApplication in 1.22 seconds (process running for 514.257)
 2024-12-29 15:29:46 - Condition evaluation unchanged
+2025-01-01 23:06:44 - Starting SpendWiseApplication using Java 17.0.11 with PID 6732 (C:\Users\ASUS\IdeaProjects\spendwise\target\classes started by ASUS in C:\Users\ASUS\IdeaProjects\spendwise)
+2025-01-01 23:06:44 - Running with Spring Boot v3.3.0, Spring v6.1.8
+2025-01-01 23:06:44 - No active profile set, falling back to 1 default profile: "default"
+2025-01-01 23:06:44 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-01 23:06:44 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-01 23:06:45 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-01 23:06:45 - Finished Spring Data repository scanning in 99 ms. Found 8 JPA repository interfaces.
+2025-01-01 23:06:46 - Tomcat initialized with port 8080 (http)
+2025-01-01 23:06:46 - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-01 23:06:46 - Starting service [Tomcat]
+2025-01-01 23:06:46 - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2025-01-01 23:06:46 - Initializing Spring embedded WebApplicationContext
+2025-01-01 23:06:46 - Root WebApplicationContext: initialization completed in 1823 ms
+2025-01-01 23:06:46 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-01 23:06:46 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-01-01 23:06:46 - HHH000026: Second-level cache disabled
+2025-01-01 23:06:46 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-01 23:06:46 - HikariPool-1 - Starting...
+2025-01-01 23:06:46 - HHH000342: Could not obtain connection to query metadata
+java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgres://u8epi3oenf916p:p7bf3d61ebfd015da80f469167ca2ba7b35fa7062151701b79080bebe366fed9c@c5hilnj7pn10vb.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d6gmfmvmt1uqjg
+	at com.zaxxer.hikari.util.DriverDataSource.<init>(DriverDataSource.java:109)
+	at com.zaxxer.hikari.pool.PoolBase.initializeDataSource(PoolBase.java:327)
+	at com.zaxxer.hikari.pool.PoolBase.<init>(PoolBase.java:113)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:91)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:437)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:290)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:123)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:77)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.app.spendWise.SpendWiseApplication.main(SpendWiseApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+2025-01-01 23:06:46 - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-01 23:06:47 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-01 23:06:47 - HikariPool-1 - Starting...
+2025-01-01 23:06:47 - Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgres://u8epi3oenf916p:p7bf3d61ebfd015da80f469167ca2ba7b35fa7062151701b79080bebe366fed9c@c5hilnj7pn10vb.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d6gmfmvmt1uqjg
+2025-01-01 23:06:47 - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgres://u8epi3oenf916p:p7bf3d61ebfd015da80f469167ca2ba7b35fa7062151701b79080bebe366fed9c@c5hilnj7pn10vb.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d6gmfmvmt1uqjg
+2025-01-01 23:06:47 - Stopping service [Tomcat]
+2025-01-01 23:06:47 - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-01-01 23:06:47 - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgres://u8epi3oenf916p:p7bf3d61ebfd015da80f469167ca2ba7b35fa7062151701b79080bebe366fed9c@c5hilnj7pn10vb.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d6gmfmvmt1uqjg
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:952)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:624)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at com.app.spendWise.SpendWiseApplication.main(SpendWiseApplication.java:14)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgres://u8epi3oenf916p:p7bf3d61ebfd015da80f469167ca2ba7b35fa7062151701b79080bebe366fed9c@c5hilnj7pn10vb.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d6gmfmvmt1uqjg
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1835)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1784)
+	... 20 common frames omitted
+Caused by: java.lang.RuntimeException: Driver org.postgresql.Driver claims to not accept jdbcUrl, jdbc:postgres://u8epi3oenf916p:p7bf3d61ebfd015da80f469167ca2ba7b35fa7062151701b79080bebe366fed9c@c5hilnj7pn10vb.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com:5432/d6gmfmvmt1uqjg
+	at com.zaxxer.hikari.util.DriverDataSource.<init>(DriverDataSource.java:109)
+	at com.zaxxer.hikari.pool.PoolBase.initializeDataSource(PoolBase.java:327)
+	at com.zaxxer.hikari.pool.PoolBase.<init>(PoolBase.java:113)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:91)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:437)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:39)
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63)
+	at org.hibernate.tool.schema.extract.spi.ExtractionContext.getQueryResults(ExtractionContext.java:43)
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:39)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:66)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:60)
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:185)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:98)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:280)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144)
+	at java.base/java.util.HashMap.forEach(HashMap.java:1421)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141)
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37)
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
+	... 24 common frames omitted
+2025-01-01 23:11:34 - Starting SpendWiseApplication using Java 17.0.11 with PID 13252 (C:\Users\ASUS\IdeaProjects\spendwise\target\classes started by ASUS in C:\Users\ASUS\IdeaProjects\spendwise)
+2025-01-01 23:11:34 - Running with Spring Boot v3.3.0, Spring v6.1.8
+2025-01-01 23:11:34 - No active profile set, falling back to 1 default profile: "default"
+2025-01-01 23:11:34 - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-01-01 23:11:34 - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-01-01 23:11:35 - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-01 23:11:35 - Finished Spring Data repository scanning in 59 ms. Found 8 JPA repository interfaces.
+2025-01-01 23:11:35 - Tomcat initialized with port 8080 (http)
+2025-01-01 23:11:35 - Initializing ProtocolHandler ["http-nio-8080"]
+2025-01-01 23:11:35 - Starting service [Tomcat]
+2025-01-01 23:11:35 - Starting Servlet engine: [Apache Tomcat/10.1.24]
+2025-01-01 23:11:35 - Initializing Spring embedded WebApplicationContext
+2025-01-01 23:11:35 - Root WebApplicationContext: initialization completed in 1377 ms
+2025-01-01 23:11:36 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-01 23:11:36 - HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-01-01 23:11:36 - HHH000026: Second-level cache disabled
+2025-01-01 23:11:36 - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-01 23:11:36 - HikariPool-1 - Starting...
+2025-01-01 23:11:39 - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@58b1470c
+2025-01-01 23:11:39 - HikariPool-1 - Start completed.
+2025-01-01 23:11:39 - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-01-01 23:11:40 - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-01 23:11:45 - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-01 23:11:45 - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-01-01 23:11:46 - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-01 23:11:46 - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@352fb5a3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@8606bae, org.springframework.security.web.context.SecurityContextHolderFilter@193a88ab, org.springframework.security.web.header.HeaderWriterFilter@4421b9d1, org.springframework.web.filter.CorsFilter@3c2c3a03, org.springframework.security.web.csrf.CsrfFilter@7ab7aec8, org.springframework.security.web.authentication.logout.LogoutFilter@245a6a3a, org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter@577c6089, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6e7a1b65, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@56941cc9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7196b0e6, org.springframework.security.web.access.ExceptionTranslationFilter@52a2244d, org.springframework.security.web.access.intercept.AuthorizationFilter@78a50d85]
+2025-01-01 23:11:47 - LiveReload server is running on port 35729
+2025-01-01 23:11:47 - Starting ProtocolHandler ["http-nio-8080"]
+2025-01-01 23:11:47 - Tomcat started on port 8080 (http) with context path '/'
+2025-01-01 23:11:47 - Started SpendWiseApplication in 14.385 seconds (process running for 15.075)
+2025-01-01 23:12:03 - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-01 23:12:03 - HikariPool-1 - Shutdown initiated...
+2025-01-01 23:12:05 - HikariPool-1 - Shutdown completed.
