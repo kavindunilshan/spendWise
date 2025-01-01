@@ -1,1 +1,1 @@
-web: java -jar target/spendwise-bo.jar
+web: java -jar target/*.jar
